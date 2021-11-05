@@ -44,6 +44,11 @@ func main() {
 	for i := 0; i < 1; i++ {
 		message, err := reader.ReadMessage(context.Background())
 
+		for _, val :=  range message.Headers{
+			if val.Key == "session" && string(val.Value) == "1234"{
+				fmt.Print("sessao correta")
+			}
+		}
 
 		if err != nil {
 			log.Fatal("cannot receive a message: ", err)
